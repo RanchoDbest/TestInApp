@@ -1,3 +1,50 @@
 <resources>
     <string name="app_name">TestInApp</string>
+
+
+
+    <string name="home_label_emp_no">Employee No</string>
+    <string name="home_label_emp_name">Employee Name</string>
+    <string name="home_label_process_date">Process Date</string>
+    <string name="home_label_payment_types">Payments (Basic/Salray)</string>
+    <string name="home_label_emp_addr1">Employee Address 1</string>
+    <string name="home_label_emp_addr2">Employee Address 2</string>
+    <string name="home_label_emp_addr3">Employee Address 3</string>
+    <string name="home_label_company_name">Company Name</string>
+    <string name="home_label_company_addr1">Company Address 1</string>
+    <string name="home_label_company_addr2">Company Address 2</string>
+    <string name="home_label_company_addr3">Company Address 3</string>
+    <string name="home_label_taxcode">Tax Code</string>
+    <string name="home_label_nationalInsuranceNO">National Insurance No</string>
+    <string name="home_label_income_tax">Income Tax</string>
+    <string name="home_label_national_insurace">National Insurance</string>
+    <string name="home_label_total_deductions">Total Deductions</string>
+    <string name="home_label_employer_nic">Employer NIC</string>
+    <string name="home_label_nitable">NI Table</string>
+    <string name="home_label_depart">Depart</string>
+    <string name="home_label_netpay">NetPay</string>
+    <string name="home_label_description">Description</string>
+    <string name="home_label_rate">Rate</string>
+    <string name="home_label_hour">Hour</string>
+    <string name="home_label_amount">Amount</string>
+    <string name="home_label_subscribe">Subscribe Now</string>
+    <string name="home_label_restore">Restore Purchases</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_full_screen">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_home_footer">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="home_terms">Payment will be charged to your Google Play account at confirmation of purchase \n\nYour subscription will automatically renew at the same rate as you initially subscribed unless you cancel your subscription by turning off auto-renewal at lease 24 hours before the expiry of the current period \n\n Your account will be charged for renewal at the same rate as you initially subscribed with 24 hours prior to the end of the current period: 1 Month plan - $2.99, 3 Month plan - $5.99, 6 Month plan - $12.99 \n\nSubscriptions may be managed by the user and auto renwal may be turned off by going to the user\'s Account settings after purchase.</string>
+    <string name="terms_of_use">Generally, all charges for purchases are nonrefundable, and there are no refunds or credits for partially used periods unless the laws applicable to your jurisdiction mandatory provide for refunds.
+        \n\nIf you subscribed using your GMAIL ID, refunds are handled by Google, not Payroll Calculator
+        \n\n 1 Month plan - $2.99
+        \n 3 Months plan - $5.99
+        \n 6 Months plan - $12.99
+        \n\n Subscriptions may be managed by the user and auto-renwal may be turned off by going to the user\'s Account settings after purchase
+     </string>
+    <string name="subscription_meg">We can\'t find your subscription. If you\'ve recently reinstalled the app or got a new device please go back to the front menu and restore your purchase. Otherwise, Subscription Now to gain Unlimited Access to all features.
+      \n Also, by subscribing the Ads will be removed.</string>
+
+
+
+
+
 </resources>

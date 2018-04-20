@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:background="#FFFFFF"
+        android:id="@+id/layoutMain">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/topTitleImageView"
+            android:layout_marginTop="@dimen/margin_small"
+            android:padding="@dimen/margin_small"
+            android:scaleType="fitCenter"
+            android:src="@drawable/easytaxuk_top"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:id="@+id/titleDivider"
+            android:background="#AEAEAE"
+            android:layout_below="@+id/topTitleImageView"/>
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleDivider"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_home_footer"></com.google.android.gms.ads.AdView>
+
+        <Button
+            android:id="@+id/btnGenerate"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/adView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="GENERATE"
+            android:textAllCaps="false" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_tiniest"
+            android:layout_below="@id/btnGenerate">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin_small"
+                    android:paddingRight="@dimen/margin_small"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_emp_no"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmpNO"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="number"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_emp_name"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmpName"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_process_date"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etProcessDate"
+                                android:textSize="@dimen/input_layout_edittext_font"
+                                android:inputType="text"
+                                android:focusable="false"
+                                android:singleLine="true"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/btnProcessDate"
+                                android:background="@android:color/transparent"/>
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_payment_types"/>
+
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            android:layout_marginBottom="@dimen/margin_normal"
+                            android:id="@+id/spPaymentTypes"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_emp_addr1"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmpAddr1"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_emp_addr2"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmpAddr2"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_emp_addr3"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmpAddr3"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_company_name"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etCompanyName"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_company_addr1"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etCompanyAddr1"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_company_addr2"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etCompanyAddr2"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_company_addr3"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etCompanyAddr3"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_taxcode"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etTaxCode"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_nationalInsuranceNO"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etNationalInsuranceNo"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_income_tax"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etIncomeTax"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_national_insurace"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etNationalInsurance"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_total_deductions"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etTotalDeductions"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_employer_nic"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmployerNIC"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_nitable"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etNITable"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_depart"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etDepart"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:text="@string/home_label_netpay"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etNetPay"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:background="#AEAEAE" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:weightSum="10"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:paddingLeft="@dimen/margin_tiny"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:lines="2"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:text="@string/home_label_description"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etDescription"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="text"
+                            android:text="Salary"
+                            android:textAlignment="center"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:paddingLeft="@dimen/margin_tiny"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:lines="2"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:text="@string/home_label_rate"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etRate"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:text="0.00"
+                            android:textAlignment="center"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:paddingLeft="@dimen/margin_tiny"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:lines="2"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:text="@string/home_label_hour"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etHour"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:text="0.00"
+                            android:textAlignment="center"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin_tiny"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:layout_weight="2.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/input_layout_label_margin_left"
+                            android:textSize="@dimen/input_layout_label_font"
+                            android:lines="2"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:text="@string/home_label_amount"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etAmount"
+                            android:textSize="@dimen/input_layout_edittext_font"
+                            android:inputType="numberDecimal"
+                            android:text="0.00"
+                            android:textAlignment="center"
+                            android:singleLine="true"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="866px"
+        android:scrollbars="horizontal"
+        android:id="@+id/scrPreview"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="1252px"
+                android:layout_height="866px"
+                android:id="@+id/layoutPDF"
+                android:background="#000000"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:layout_width="1252px"
+                    android:layout_height="866px"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/pdf_background"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/textViewEmployeeNO"
+                    android:layout_width="100px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="72px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="115px"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:text="01" />
+
+                <TextView
+                    android:id="@+id/textViewEmployeeName"
+                    android:layout_width="470px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="210px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="115px"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="Mr ABC XYZ" />
+
+                <TextView
+                    android:id="@+id/textViewProcessDate"
+                    android:layout_width="150px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="750px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="115px"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="30-Apr-2018" />
+
+                <TextView
+                    android:id="@+id/textViewNiNo"
+                    android:layout_width="250px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="950px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="115px"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="SC 56 52 10 C" />
+
+                <TextView
+                    android:id="@+id/textViewUnit"
+                    android:layout_width="100px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="315px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="186px"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="0.00" />
+
+                <TextView
+                    android:id="@+id/textViewRate"
+                    android:layout_width="100px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="442px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="186px"
+                    android:textAlignment="center"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="0.00" />
+
+                <TextView
+                    android:id="@+id/textViewBasicPay"
+                    android:layout_width="120px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="574px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="186px"
+                    android:textAlignment="textStart"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="1,000.00" />
+
+                <TextView
+                    android:id="@+id/textViewTotalPayments"
+                    android:layout_width="120px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="574px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="210px"
+                    android:textAlignment="textStart"
+                    android:textSize="21px"
+                    android:singleLine="true"
+                    android:text="1,000.00" />
+
+                <TextView
+                    android:id="@+id/textViewIncomeTax"
+                    android:layout_width="230px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="959px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="186px"
+                    android:textAlignment="textEnd"
+                    android:singleLine="true"
+                    android:textSize="21px"
+                    android:text="16.40" />
+
+                <TextView
+                    android:id="@+id/textViewNI"
+                    android:layout_width="230px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="959px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="210px"
+                    android:textAlignment="textEnd"
+                    android:singleLine="true"
+                    android:textSize="21px"
+                    android:text="16.40" />
+
+                <TextView
+                    android:id="@+id/textViewTotalDeduction"
+                    android:layout_width="230px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="959px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="234px"
+                    android:textAlignment="textEnd"
+                    android:singleLine="true"
+                    android:textSize="21px"
+                    android:text="$16.40" />
+
+                <TextView
+                    android:id="@+id/textViewEmployeeName1"
+                    android:layout_width="430px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="70px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="570px"
+                    android:textAlignment="textStart"
+                    android:singleLine="true"
+                    android:textSize="22px"
+                    android:text="Mr ABC XYZ" />
+
+                <TextView
+                    android:id="@+id/textViewEmployeeAddr"
+                    android:layout_width="430px"
+                    android:layout_height="80px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="70px"
+                    android:textColor="#000000"
+                    android:layout_marginTop="594px"
+                    android:textAlignment="textStart"
+                    android:textSize="21px"
+                    android:text="123 London Road" />
+
+                <TextView
+                    android:id="@+id/textViewTotalPayments1"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="693px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="605px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$0.00" />
+
+                <TextView
+                    android:id="@+id/textViewTotalDeduction1"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="693px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="629px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$55.78" />
+
+                <TextView
+                    android:id="@+id/textViewTaxableGrossPay"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="1050px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="605px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$55.78" />
+
+                <TextView
+                    android:id="@+id/textViewIncomeTax1"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="1050px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="629px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$55.78" />
+
+                <TextView
+                    android:id="@+id/textViewEmployeeNIC"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="1050px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="653px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$55.78" />
+
+                <TextView
+                    android:id="@+id/textViewEmployerNIC"
+                    android:layout_width="140px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="1050px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="677px"
+                    android:textAlignment="textEnd"
+                    android:textSize="21px"
+                    android:text="$55.78" />
+
+                <TextView
+                    android:id="@+id/textViewCompanyName"
+                    android:layout_width="740px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="59px"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:layout_marginTop="760px"
+                    android:textAlignment="textStart"
+                    android:textSize="26px"
+                    android:text="Test Company" />
+
+                <TextView
+                    android:id="@+id/textViewTaxCode"
+                    android:layout_width="60px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="140px"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:layout_marginTop="798px"
+                    android:textAlignment="textStart"
+                    android:textSize="17px"
+                    android:text="1100L" />
+
+                <TextView
+                    android:id="@+id/textViewNITable"
+                    android:layout_width="23px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="270px"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:layout_marginTop="798px"
+                    android:textAlignment="textStart"
+                    android:textSize="17px"
+                    android:text="A" />
+
+                <TextView
+                    android:id="@+id/textViewDept"
+                    android:layout_width="67px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="345px"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:layout_marginTop="798px"
+                    android:textAlignment="textStart"
+                    android:textSize="17px"
+                    android:text="Default" />
+
+                <TextView
+                    android:id="@+id/textViewTaxPeriod"
+                    android:layout_width="85px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="507px"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:layout_marginTop="798px"
+                    android:textAlignment="textStart"
+                    android:textSize="17px"
+                    android:text="Apr-2016" />
+
+                <TextView
+                    android:id="@+id/textViewPaymentMethod"
+                    android:layout_width="115px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="732px"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:layout_marginTop="798px"
+                    android:textAlignment="textStart"
+                    android:textSize="17px"
+                    android:text="BACS" />
+
+                <TextView
+                    android:id="@+id/textViewNetPay"
+                    android:layout_width="174px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="1020px"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:layout_marginTop="792px"
+                    android:textAlignment="textEnd"
+                    android:textSize="26px"
+                    android:text="944.24" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

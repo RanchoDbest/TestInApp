@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnCreate"
+            android:layout_above="@+id/btnSave"
+            android:clickable="true"
+            android:src="@drawable/create_button"
+            android:layout_marginBottom="@dimen/homepage_button_margin"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter" >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnSave"
+            android:clickable="true"
+            android:src="@drawable/save_button"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnRate"
+            android:src="@drawable/rate_button"
+            android:clickable="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/homepage_button_margin"
+            android:layout_below="@id/btnSave"
+            android:scaleType="fitCenter">
+
+        </ImageView>
+
+       <Button
+           android:layout_width="300dp"
+           android:layout_height="50dp"
+           android:id="@+id/btnSubscribe"
+           android:layout_below="@id/btnRate"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="@dimen/homepage_button_margin"
+           android:scaleType="fitCenter"
+           android:text="@string/home_label_subscribe"
+           android:textAllCaps="false"
+           android:textColor="@color/colorWhite"
+           android:textStyle="bold"
+           android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+           android:background="@color/colorSubscribe"/>
+
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnRestore"
+            android:layout_below="@id/btnSubscribe"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/homepage_button_margin"
+            android:scaleType="fitCenter"
+            android:text="@string/home_label_restore"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:background="@color/restorePurchase"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

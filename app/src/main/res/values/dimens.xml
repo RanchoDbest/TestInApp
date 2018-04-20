@@ -1,0 +1,40 @@
+<resources>
+    <dimen name="font_giant">50sp</dimen>
+    <dimen name="font_huge">30sp</dimen>
+    <dimen name="font_largest">24sp</dimen>
+    <dimen name="font_larger">18sp</dimen>
+    <dimen name="font_large">16sp</dimen>
+    <dimen name="font_medium">15sp</dimen>
+    <dimen name="font_small">13sp</dimen>
+    <dimen name="font_smallest">12sp</dimen>
+
+    <dimen name="margin_tiniest">4dp</dimen>
+    <dimen name="margin_tiny">8dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_larger">24dp</dimen>
+    <dimen name="margin_largest">36dp</dimen>
+
+    <dimen name="padding_tiny">2dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_larger">24dp</dimen>
+    <dimen name="padding_largest">32dp</dimen>
+
+    <dimen name="font_title">20sp</dimen>
+    <dimen name="font_subhead">16sp</dimen>
+
+    <dimen name="input_layout_margin_top">4dp</dimen>
+    <dimen name="input_layout_label_font">15sp</dimen>
+    <dimen name="input_layout_label_margin_left">2dp</dimen>
+    <dimen name="input_layout_edittext_font">17sp</dimen>
+
+    <dimen name="radius_button">4dp</dimen>
+    <dimen name="size_button">40dp</dimen>
+    <dimen name="radius_normal">6dp</dimen>
+
+    <dimen name="homepage_button_margin">20dp</dimen>
+
+</resources>

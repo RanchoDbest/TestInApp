@@ -15,13 +15,43 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".SubscriptionDetailsActivity">
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.CreateActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.SaveListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.PreviewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.SubscriptionDetailsActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".activities.TermsOfUseActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".activities.RestoreSubscriptionActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

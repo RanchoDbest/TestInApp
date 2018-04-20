@@ -23,19 +23,35 @@ import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
 import android.content.ServiceConnection;
 import android.content.pm.ResolveInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.android.vending.billing.IInAppBillingService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import in.test.rachana.Global.Constants;
+import in.test.rachana.UtilsApp.SessionManager;
+import in.test.rachana.activities.RestoreSubscriptionActivity;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 /**
@@ -161,6 +177,16 @@ public class IabHelper {
     // some fields on the getSkuDetails response bundle
     public static final String GET_SKU_DETAILS_ITEM_LIST = "ITEM_ID_LIST";
     public static final String GET_SKU_DETAILS_ITEM_TYPE_LIST = "ITEM_TYPE_LIST";
+
+    // sharedprense data for restoring
+
+    SessionManager session;
+    FormBody.Builder formBody;
+
+    String access_token,expires_in,refresh_token,token_type;
+    String productId,orderId,packageName,purchaseTime,purchaseState,autoRenewing,purchaseToken,startTimeMillis,expiryTimeMillis,auto_renew;
+
+
 
     /**
      * Creates an instance. After creation, it will not yet be ready to use. You must perform
@@ -465,9 +491,8 @@ public class IabHelper {
                         oldSkus, sku, itemType, extraData);
             }
             int response = getResponseCodeFromBundle(buyIntentBundle);
-            Log.e("Response", String.valueOf(response));
             if (response != BILLING_RESPONSE_RESULT_OK) {
-                Log.e("Error response: " ,""+ getResponseDesc(response));
+                logError("Unable to buy item, Error response: " + getResponseDesc(response));
                 flagEndAsync();
                 result = new IabResult(response, "Unable to buy item");
                 if (listener != null) listener.onIabPurchaseFinished(result, null);
@@ -543,6 +568,69 @@ public class IabHelper {
             logDebug("Extras: " + data.getExtras());
             logDebug("Expected item type: " + mPurchasingItemType);
 
+
+            try {
+                JSONObject purchaseObject = new JSONObject(purchaseData);
+                 productId = purchaseObject.getString("productId");
+                 orderId = purchaseObject.getString("orderId");
+                 packageName = purchaseObject.getString("packageName");
+                 purchaseTime = purchaseObject.getString("purchaseTime");
+                 purchaseState = purchaseObject.getString("purchaseState");
+                 autoRenewing = purchaseObject.getString("autoRenewing");
+                 purchaseToken = purchaseObject.getString("purchaseToken");
+
+                session = new SessionManager(mContext);
+
+                session.createUserPurchseData(productId,orderId,packageName,purchaseTime,purchaseState,autoRenewing,purchaseToken);
+
+
+
+                /*sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+
+                editor.commit();*/
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (Constants.isNetworkAvailable(mContext)) {
+                try {
+                   /* formBody = new FormBody.Builder();
+                    formBody.add("grant_type","authorization_code" );
+                    formBody.add("code", "4/AACEcTk1f6kwAIwCHfiuGGoS70dA2QSHOpZJkB66vJe9JVzV0SLKEb4");
+                    // Note : Add code whatever you get from console developer it looks like  4/AAA1a8HsmAt1NbNEa4EkDykNyOC7iEBJM9aeQYy4xRlp6fmnFLuxRVM
+
+
+                    //client_id,client_secret,redirect_uri will get from JSON file which can be downloaded by creating service account
+                    formBody.add("client_id", "198296149347-pgktvugegln8qie4i4tcqobd4ce9mp66.apps.googleusercontent.com");
+                    formBody.add("client_secret", "1oU4zEUrct4Vq5m4fO3hoid9");
+                    formBody.add("redirect_uri", "urn:ietf:wg:oauth:2.0:oob");*/
+
+
+                    formBody = new FormBody.Builder();
+                    formBody.add("grant_type","refresh_token" );
+                    //  formBody.add("code", "4/AAA1a8HsmAt1NbNEa4EkDykNyOC7iEBJM9aeQYy4xRlp6fmnFLuxRVM");
+                    // Note : Add code whatever you get from console developer it looks like  4/AAA1a8HsmAt1NbNEa4EkDykNyOC7iEBJM9aeQYy4xRlp6fmnFLuxRVM
+                    //client_id,client_secret,redirect_uri will get from JSON file which can be downloaded by creating service account
+                    formBody.add("client_id", "198296149347-pgktvugegln8qie4i4tcqobd4ce9mp66.apps.googleusercontent.com");
+                    formBody.add("client_secret", "1oU4zEUrct4Vq5m4fO3hoid9");
+                    formBody.add("refresh_token", "1/KxxE6Us1rFUGzO3QNc419KkCjvLA7kXuk00ReNvM_l4");
+
+                    getAccessToken getAccessToken = new getAccessToken(formBody.build());
+
+                    //here parse the token_uri which is also get from downloaded JSON file
+                    getAccessToken.execute("https://accounts.google.com/o/oauth2/token");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(mContext,"No Internet Connection",Toast.LENGTH_SHORT).show();
+            }
+
+
             if (purchaseData == null || dataSignature == null) {
                 logError("BUG: either purchaseData or dataSignature is null.");
                 logDebug("Extras: " + data.getExtras().toString());
@@ -598,6 +686,8 @@ public class IabHelper {
         }
         return true;
     }
+
+
 
     public Inventory queryInventory() throws IabException {
         return queryInventory(false, null, null);
@@ -943,8 +1033,7 @@ public class IabHelper {
 
         do {
             logDebug("Calling getPurchases with continuation token: " + continueToken);
-            Bundle ownedItems = mService.getPurchases(3, mContext.getPackageName(),
-                    itemType, continueToken);
+            Bundle ownedItems = mService.getPurchases(3, mContext.getPackageName(), itemType, continueToken);
 
             int response = getResponseCodeFromBundle(ownedItems);
             logDebug("Owned items response: " + String.valueOf(response));
@@ -1114,4 +1203,171 @@ public class IabHelper {
     void logWarn(String msg) {
         Log.w(mDebugTag, "In-app billing warning: " + msg);
     }
+
+    // Async class Added for getting access_token which is required for getting start date and end date of subscription
+
+
+    public class getAccessToken extends AsyncTask<String, Integer, String> {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES)
+                .writeTimeout(5, TimeUnit.MINUTES)
+                .readTimeout(7, TimeUnit.MINUTES)
+                .build();
+
+        RequestBody requestBody;
+
+        public getAccessToken(RequestBody requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            Request.Builder builder = new Request.Builder();
+
+            builder.post(requestBody);
+            builder.url(params[0]);
+            Request request = builder.build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            Log.e("getAccessToken", "" + response);
+
+
+            if (response != null) {
+                try {
+                    JSONObject JSONresult = new JSONObject(response);
+
+                    if(!JSONresult.has("error")){
+
+                        if(JSONresult.has("access_token")){
+                            access_token = JSONresult.getString("access_token");
+                           // refresh_token = JSONresult.getString("refresh_token");
+                            expires_in = JSONresult.getString("expires_in");
+                            token_type = JSONresult.getString("token_type");
+
+                            if (Constants.isNetworkAvailable(mContext)) {
+                                try {
+                                    getSubscriptionDetails getSubscriptionDetails = new getSubscriptionDetails();
+                                    getSubscriptionDetails.execute("https://www.googleapis.com/androidpublisher/v2/applications/"+packageName+"/purchases/subscriptions/"+productId+"/tokens/"+purchaseToken+"?access_token="+access_token);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Toast.makeText(mContext,"No Internet Connection",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                    }else{
+                        Toast.makeText(mContext,"Some error occured",Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
+    }
+
+    public class getSubscriptionDetails extends AsyncTask<String, Integer, String> {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES)
+                .writeTimeout(5, TimeUnit.MINUTES)
+                .readTimeout(7, TimeUnit.MINUTES)
+                .build();
+
+
+
+        public getSubscriptionDetails() {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            Request.Builder builder = new Request.Builder();
+
+            builder.get();
+            builder.url(params[0]);
+            Request request = builder.build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            Log.e("getSubscriptionDetails", "" + response);
+
+
+            if (response != null) {
+                try {
+                    JSONObject JSONresult = new JSONObject(response);
+
+                    startTimeMillis = JSONresult.getString("startTimeMillis");
+                    expiryTimeMillis = JSONresult.getString("expiryTimeMillis");
+                    auto_renew = JSONresult.getString("autoRenewing");
+
+                    session = new SessionManager(mContext);
+
+                  /*  public static String getDate(long milliSeconds, String dateFormat) {
+                        // Create a DateFormatter object for displaying date in specified format.
+
+                    }*/
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+                    // Create a calendar object that will convert the date and time value in milliseconds to date.
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTimeInMillis(Long.parseLong(startTimeMillis));
+
+                    Calendar calendarend = Calendar.getInstance();
+                    calendarend.setTimeInMillis(Long.parseLong(expiryTimeMillis));
+
+                    session.startEndDate(formatter.format(calendar.getTime()),formatter.format(calendarend.getTime()));
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
+    }
+
+
+
+
+
 }
